@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Airbnb and crime in denver, CO 2019</title>
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+    <!-- plotly cdn -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- d3 cdn -->
+    <script src="{{ url_for('static', filename='js/d3.min.js') }}"></script>
+
+    <!-- bootstrap stylesheets and js-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <!-- Marker Cluster JS & CSS -->
+    <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+
+
+    <!-- our stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- vis.js dependencies -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vis.css') }}" type="text/css">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/vis.js') }}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron" style="text-align: center;padding:40px;margin-top:20px;margin-bottom:20px;background-color:rgb(69, 214, 219);">
+            <h1>Find safest AirBNB place in Denver</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>The Neighborhoods with bigger circle has more Crime occurrences</h2>
+        <div class="row" style="margin-bottom:1px">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <div id="mynetwork" style="margin-bottom:1px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+      <h2>Geographic Visualization of Denver AirBNB and Crime Occurances</h2>
+      <!-- The div where we will inject our map -->
+      <div class="row" style="margin-bottom:10px">
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  <div class="col-md-12">
+                      <div id="map" style="margin-bottom:10px"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+  <div class="container">
+      <h2>Which types of Listings are there in Denver Neighborhoods?</h2>
+      <h2>How popular is AirBNB in Denver?  </h2>
+      <div class="row" style="margin-bottom:10px">
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  <div class="col-md-12">
+                      <h5>Select Neighborhood:</h5>
+                      <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                  </div>
+                  <div class="col-md-6">
+                      <div id="pie"></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div id="timePlot"></div>
+                 </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- our js script -->
+    <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
+</body>
+
+</html>
